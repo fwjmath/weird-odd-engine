@@ -45,7 +45,7 @@ int congruence[INITIAL_SEG];
 
 // Divisors array
 #define DIVISOR_BOUND 1048576
-unsigned long long divisors[DIVISOR_BOUND];
+unsigned long int divisors[DIVISOR_BOUND];
 unsigned int divisor_cnt;
 
 // Checksum mechanism
@@ -648,7 +648,7 @@ int main(){
 		n=lb-3;
 		checksum=0;
 	}else{
-		fscanf("%ul %ul", &n, &checksum);
+		fscanf(fio,"%ul %ul", &n, &checksum);
 		fclose(fio);
 	}
 	
