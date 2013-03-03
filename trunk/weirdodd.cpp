@@ -570,9 +570,10 @@ void check_weird(){
 		if(!mpz_fits_ulong_p(gtmp.get_mpz_t())){
 			// Do some error handling, for example recording the number n
 			fio=fopen("res.txt","a");
-			printf("Error on %lu!!!\n", n);
-			fprintf(fio,"Error on %lu!!!\n", n);
+			printf("Error on %lu: excess too large\n", n);
+			fprintf(fio,"Error on %lu: excess too large\n", n);
 			fclose(fio);
+			return;
 		}
 		tmp=mpz_get_ui(gtmp.get_mpz_t());
 		//printf("Excess: %lu\n", tmp);
@@ -580,6 +581,16 @@ void check_weird(){
 		tmp=mpz_get_ui(gtmp.get_mpz_t());
 		tmp2=0;
 		for(int i=0;i<divisor_cnt;i++) tmp2+=divisors[i];
+		gtmp=0;
+		for(int i=0;i<divisor_cnt;i++) gtmp+=divisors[i];
+		if(gtmp!=tmp2){
+			// Do some error handling, sum of divisors to large
+			fio=fopen("res.txt","a");
+			printf("Error on %lu: sum of divisors too large\n", n);
+			fprintf(fio,"Error on %lu: sum of divisors too large\n", n);
+			fclose(fio);
+			return;
+		}
 		if(!subset_sum(divisor_cnt-1,tmp,tmp2)){
 			// We found a weird number!
 			fio=fopen("res.txt","a");
