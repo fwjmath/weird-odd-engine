@@ -701,5 +701,9 @@ int main(){
 			fclose(fio);
 		}
 	}
+	
+	fio=fopen("res.txt","a");
+	fprintf(fio,"%lu\n",checksum);
+	fclose(fio);
 	return 0;
 }
