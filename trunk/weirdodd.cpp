@@ -525,11 +525,11 @@ bool generate_divisors(unsigned long long aim){
 		}
 	}
 	
-	// Remove n
-	if(divisors[divisors_cnt-1]==n) divisors_cnt--;
-	
 	// Sort the divisor list
 	std::sort(divisors, divisors+divisor_cnt);
+	
+	// Remove n
+	if(divisors[divisor_cnt-1]==n) divisor_cnt--;
 	return true;
 }
 
